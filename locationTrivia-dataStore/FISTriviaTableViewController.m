@@ -8,6 +8,8 @@
 
 #import "FISTriviaTableViewController.h"
 #import "FISTrivia.h"
+#import "FISAddTriviaViewController.h"
+#import "FISLocationsDataStore.h"
 
 @interface FISTriviaTableViewController ()
 
@@ -29,6 +31,7 @@
     [super viewDidLoad];
 
 
+    self.addTriviaBarButton.accessibilityLabel = @"Add Trivia Button";
     self.view.accessibilityIdentifier=@"Trivia Table";
     self.view.accessibilityLabel=@"Trivia Table";
     
@@ -37,6 +40,12 @@
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+- (void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:YES];
+    [self.tableView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -109,7 +118,7 @@
 }
 */
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
@@ -117,7 +126,12 @@
 {
     // Get the new view controller using [segue destinationViewController].
     // Pass the selected object to the new view controller.
+    FISAddTriviaViewController *addTrivaDVC = segue.destinationViewController;
+    addTrivaDVC.trivia = self.trivia;
+    
+    /* passing trivia to destination will automatically update data manager trivia array because they share the same address */
+    
 }
-*/
+
 
 @end

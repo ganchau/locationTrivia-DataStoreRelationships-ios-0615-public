@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface FISTriviaTableViewController : UITableViewController
-@property (strong, nonatomic) NSArray *trivia;
+@property (strong, nonatomic) NSMutableArray *trivia;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addTriviaBarButton;
 
 @end
